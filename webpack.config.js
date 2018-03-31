@@ -10,11 +10,25 @@ const reactExternal = {
   amd: 'react'
 }
 
+const immutableExternal = {
+  root: 'Immutable',
+  commonjs2: 'immutable',
+  commonjs: 'immutable',
+  amd: 'immutable'
+}
+
 const reduxExternal = {
   root: 'Redux',
   commonjs2: 'redux',
   commonjs: 'redux',
   amd: 'redux'
+}
+
+const reselectExternal = {
+  root: 'Reselect',
+  commonjs2: 'reselect',
+  commonjs: 'reselect',
+  amd: 'reselect'
 }
 
 const reactReduxExternal = {
@@ -28,6 +42,8 @@ const config = {
   externals: {
     react: reactExternal,
     redux: reduxExternal,
+    immutable: immutableExternal,
+    reselect: reselectExternal,
     'react-redux': reactReduxExternal
   },
   module: {

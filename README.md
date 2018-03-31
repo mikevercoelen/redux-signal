@@ -1,4 +1,4 @@
-[<img src="https://raw.githubusercontent.com/mikevercoelen/redux-signal/master/logo.png" align="right" class="logo" height="100" width="165"/>](http://mikevercoelen.github.io/redux-signal/)
+[<img src="https://raw.githubusercontent.com/mikevercoelen/redux-signal/master/logo.png" class="logo" height="100" width="165"/>](http://mikevercoelen.github.io/redux-signal/)
 
 # redux-signal
 

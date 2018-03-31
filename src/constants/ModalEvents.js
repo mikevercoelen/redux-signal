@@ -1,0 +1,5 @@
+export const CLOSE = 'CLOSE'
+export const BTN_CANCEL = 'BTN_CANCEL'
+export const BTN_OK = 'BTN_OK'
+export const BTN_YES = 'BTN_YES'
+export const BTN_NO = 'BTN_NO'

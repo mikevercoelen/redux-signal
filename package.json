@@ -58,6 +58,7 @@
     "is-promise": "^2.1.0",
     "lodash": "^4.17.5",
     "lodash-es": "^4.17.5",
+    "lru-memoize": "^1.0.2",
     "prop-types": "^15.6.1"
   },
   "devDependencies": {
@@ -107,7 +108,9 @@
   "peerDependencies": {
     "react": "^15.0.0-0 || ^16.0.0-0",
     "react-redux": "^4.3.0 || ^5.0.0",
-    "redux": "^3.0.0"
+    "redux": "^3.0.0",
+    "immutable": "^3.8.2",
+    "reselect": "^3.0.1"
   },
   "files": ["README.md", "es", "lib", "dist", "immutable.js"],
   "lint-staged": {
