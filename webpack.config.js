@@ -10,6 +10,13 @@ const reactExternal = {
   amd: 'react'
 }
 
+const propTypesExternal = {
+  root: 'PropTypes',
+  commonjs2: 'prop-types',
+  commonjs: 'prop-types',
+  amd: 'prop-types'
+}
+
 const reduxExternal = {
   root: 'Redux',
   commonjs2: 'redux',
@@ -24,11 +31,27 @@ const reactReduxExternal = {
   amd: 'react-redux'
 }
 
+const immutableExternal = {
+  root: 'Immutable',
+  commonjs2: 'immutable',
+  commonjs: 'immutable',
+  amd: 'immutable'
+}
+
+const reselectExternal = {
+  commonjs2: 'reselect',
+  commonjs: 'reselect',
+  amd: 'reselect'
+}
+
 const config = {
   externals: {
     react: reactExternal,
     redux: reduxExternal,
-    'react-redux': reactReduxExternal
+    immutable: immutableExternal,
+    reselect: reselectExternal,
+    'react-redux': reactReduxExternal,
+    'prop-types': propTypesExternal
   },
   module: {
     loaders: [
