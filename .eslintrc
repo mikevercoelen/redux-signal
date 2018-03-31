@@ -1,8 +1,12 @@
-
 {
-  "extends": "react-app",
-  "rules": {
-    "jsx-a11y/href-no-hash": 0,
-    "semi": ["error", "never"]
+  "parser": "babel-eslint",
+  "extends": [
+    "standard",
+    "standard-react",
+    "plugin:jest/recommended"
+  ],
+  "env": {
+    "browser": true,
+    "mocha": true
   }
 }
