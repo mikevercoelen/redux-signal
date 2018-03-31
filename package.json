@@ -95,8 +95,6 @@
     "jest": "^22.4.2",
     "lint-staged": "^7.0.0",
     "lodash-webpack-plugin": "^0.11.2",
-    "prettier": "^1.11.1",
-    "prettier-eslint-cli": "^4.7.1",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-redux": "^5.0.7",
@@ -116,9 +114,17 @@
     "immutable": "^3.8.2",
     "reselect": "^3.0.1"
   },
-  "files": ["README.md", "es", "lib", "dist", "immutable.js"],
+  "files": [
+    "README.md",
+    "es",
+    "lib",
+    "dist"
+  ],
   "lint-staged": {
-    "*.{js,json,md,css}": ["prettier --write", "git add"]
+    "*.js": [
+      "eslint --fix",
+      "git add"
+    ]
   },
   "jest": {
     "collectCoverageFrom": ["src/**/*.js", "!src/**/__tests__/**/*.js"],

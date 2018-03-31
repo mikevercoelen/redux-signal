@@ -27,16 +27,16 @@ const createContainer = ({ Modal }) => {
       rawModal: PropTypes.instanceOf(Map)
     }
 
-    componentWillMount() {
+    componentWillMount () {
       this.props.updateModals()
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
       nextProps.updateModals()
       nextProps.handleEventFeedback()
     }
 
-    render() {
+    render () {
       const {
         modals,
         rawModal,

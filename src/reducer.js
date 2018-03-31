@@ -18,7 +18,7 @@ const emptyModal = Map({
   state: ModalStates.CREATED
 })
 
-function signalCreate(state, action) {
+function signalCreate (state, action) {
   const modalInstanceId = getSignalInstanceId(action.modal.get('id'))
 
   return state
@@ -38,7 +38,7 @@ function signalCreate(state, action) {
     })
 }
 
-function signalDestroy(state, action) {
+function signalDestroy (state, action) {
   const modalInstanceId = getSignalInstanceId(action.id)
 
   return state
@@ -47,7 +47,7 @@ function signalDestroy(state, action) {
     .deleteIn(['modal', modalInstanceId])
 }
 
-function signalSetState(state, action) {
+function signalSetState (state, action) {
   const translatedAction = {
     instanceId: getSignalInstanceId(action.id),
     value: action.value
@@ -59,7 +59,7 @@ function signalSetState(state, action) {
   )
 }
 
-function signalEvent(state, action) {
+function signalEvent (state, action) {
   const eventHandlerId = state.getIn([
     'signal',
     'data',
@@ -76,7 +76,7 @@ function signalEvent(state, action) {
   return state
 }
 
-function signalEventQueueShift(state, action) {
+function signalEventQueueShift (state, action) {
   const event = state
     .getIn(['signal', 'eventQueue', action.eventQueueId])
     .first()
@@ -89,7 +89,7 @@ function signalEventQueueShift(state, action) {
     )
 }
 
-export default function reduxSignalReducer(state = initialState, action) {
+export default function reduxSignalReducer (state = initialState, action) {
   switch (action.type) {
     case ActionTypes.MODAL_CREATE:
     case ActionTypes.MODAL_HIDE:

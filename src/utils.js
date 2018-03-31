@@ -1,6 +1,6 @@
 export const getSignalInstanceId = id => `signal-${id}`
 
-export function uid(len) {
+export function uid (len) {
   len = len || 7
   return Math.random()
     .toString(35)

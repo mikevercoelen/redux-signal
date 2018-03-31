@@ -1,5 +1,5 @@
 import { fromJS } from 'immutable'
-import { uid } from 'utils'
+import { uid } from './utils'
 import * as ModalStates from './constants/ModalStates'
 import * as ActionTypes from './constants/ActionTypes'
 
