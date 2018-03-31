@@ -1,8 +1,7 @@
 {
   "name": "redux-signal",
   "version": "1.0.0",
-  "description":
-    "A scalable solution for modal notifications using React and Redux",
+  "description": "A scalable solution for modal notifications using React and Redux",
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "jsnext:main": "./es/index.js",
@@ -12,22 +11,17 @@
     "url": "git+https://github.com/mikevercoelen/redux-signal.git"
   },
   "scripts": {
-    "analyze":
-      "webpack src/index.js dist/redux-signal.js -p --bail --profile --json > stats.json && webpack-bundle-analyzer stats.json",
-    "build":
-      "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
+    "analyze": "webpack src/index.js dist/redux-signal.js -p --bail --profile --json > stats.json && webpack-bundle-analyzer stats.json",
+    "build": "npm run build:lib && npm run build:es && npm run build:umd && npm run build:umd:min",
     "build:lib": "babel src --out-dir lib --ignore __tests__",
-    "build:es":
-      "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
-    "build:umd":
-      "cross-env NODE_ENV=development webpack src/index.js dist/redux-signal.js",
-    "build:umd:min":
-      "cross-env NODE_ENV=production webpack src/index.js dist/redux-signal.min.js",
+    "build:es": "cross-env BABEL_ENV=es babel src --out-dir es --ignore __tests__",
+    "build:umd": "cross-env NODE_ENV=development webpack src/index.js dist/redux-signal.js",
+    "build:umd:min": "cross-env NODE_ENV=production webpack src/index.js dist/redux-signal.min.js",
     "clean": "rimraf dist lib es",
     "lint": "eslint src",
+    "lint:fix": "eslint src --fix",
     "precommit": "lint-staged",
-    "prepublishOnly":
-      "npm run lint && npm run test:cov && npm run clean && npm run build",
+    "prepublishOnly": "npm run lint && npm run test:cov && npm run clean && npm run build",
     "test": "cross-env NODE_ENV=test jest --runInBand",
     "test:watch": "npm test -- --watch",
     "test:cov": "npm run test -- --coverage"
@@ -59,7 +53,8 @@
     "lodash": "^4.17.5",
     "lodash-es": "^4.17.5",
     "lru-memoize": "^1.0.2",
-    "prop-types": "^15.6.1"
+    "prop-types": "^15.6.1",
+    "reselect": "^3.0.1"
   },
   "devDependencies": {
     "babel-cli": "^6.26.0",
@@ -110,9 +105,7 @@
   "peerDependencies": {
     "react": "^15.0.0-0 || ^16.0.0-0",
     "react-redux": "^4.3.0 || ^5.0.0",
-    "redux": "^3.0.0",
-    "immutable": "^3.8.2",
-    "reselect": "^3.0.1"
+    "redux": "^3.0.0"
   },
   "files": [
     "README.md",
@@ -127,9 +120,19 @@
     ]
   },
   "jest": {
-    "collectCoverageFrom": ["src/**/*.js", "!src/**/__tests__/**/*.js"],
-    "coverageReporters": ["text", "lcov", "html"],
-    "coveragePathIgnorePatterns": ["/node_modules/", "/dist/"],
+    "collectCoverageFrom": [
+      "src/**/*.js",
+      "!src/**/__tests__/**/*.js"
+    ],
+    "coverageReporters": [
+      "text",
+      "lcov",
+      "html"
+    ],
+    "coveragePathIgnorePatterns": [
+      "/node_modules/",
+      "/dist/"
+    ],
     "testRegex": "__tests__/.*\\.spec\\.js$",
     "testEnvironment": "jsdom"
   },
@@ -137,7 +140,9 @@
   "npmFileMap": [
     {
       "basePath": "/dist/",
-      "files": ["*.js"]
+      "files": [
+        "*.js"
+      ]
     }
   ]
 }

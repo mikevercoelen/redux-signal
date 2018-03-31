@@ -22,15 +22,15 @@ const eventHandler = () => {
       /* eslint-enable */
     }
 
-    componentWillMount() {
+    componentWillMount () {
       this.processEvents(this.props)
     }
 
-    componentWillReceiveProps(nextProps) {
+    componentWillReceiveProps (nextProps) {
       this.processEvents(nextProps)
     }
 
-    componentWillUnmount() {
+    componentWillUnmount () {
       this.props.destroyQueue()
     }
 
@@ -40,7 +40,7 @@ const eventHandler = () => {
       }
     }
 
-    processEvents(props) {
+    processEvents (props) {
       if (props.event) {
         const handlers = {
           [ModalEvents.BTN_OK]: props.onOkButton,
@@ -55,7 +55,7 @@ const eventHandler = () => {
       }
     }
 
-    render() {
+    render () {
       return null
     }
   }

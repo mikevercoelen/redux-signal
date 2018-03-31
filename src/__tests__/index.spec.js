@@ -27,18 +27,18 @@ describe('index', () => {
   })
 
   it('should export ModalSeverity', () => {
-    expect(typeof ModalSeverity).toBe('array')
+    expect(typeof ModalSeverity).toBe('object')
   })
 
   it('should export ModalStates', () => {
-    expect(typeof ModalStates).toBe('array')
+    expect(typeof ModalStates).toBe('object')
   })
 
   it('should export ModalTypes', () => {
-    expect(typeof ModalTypes).toBe('array')
+    expect(typeof ModalTypes).toBe('object')
   })
 
   it('should export ModalEvents', () => {
-    expect(typeof ModalEvents).toBe('array')
+    expect(typeof ModalEvents).toBe('object')
   })
 })
