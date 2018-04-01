@@ -3,7 +3,7 @@ import * as ActionTypes from './constants/ActionTypes'
 import * as ModalStates from './constants/ModalStates'
 import { getSignalInstanceId } from './utils'
 
-const initialState = fromJS({
+export const initialState = fromJS({
   signal: {
     data: {},
     eventQueue: {},
