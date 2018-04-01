@@ -45,41 +45,33 @@ const createContainer = ({ Modal }) => {
         onModalEvent
       } = this.props
 
-      return (
-        <div>
-          {modals.map(modal => {
-            const id = modal.get('id')
-            const currentRawModal = rawModal.get(id)
+      return modals.map(modal => {
+        const id = modal.get('id')
+        const currentRawModal = rawModal.get(id)
 
-            return (
-              <Modal
-                key={`signal-${id}`}
-                onModalEvent={onModalEvent}
-                toggle={() => onModalExited(id)}
-                isFirst={currentRawModal.isFirst}
-                isOpen={currentRawModal.isVisible}
-                isRequired={modal.get('isRequired')}
-                onClosed={() => onModalClose(id)}
-                modal={modal}
-              />
-            )
-          })}
-        </div>
-      )
+        return (
+          <Modal
+            key={`signal-${id}`}
+            onModalEvent={onModalEvent}
+            toggle={() => onModalExited(id)}
+            isFirst={currentRawModal.get('isFirst')}
+            isOpen={currentRawModal.get('isVisible')}
+            isRequired={modal.get('isRequired')}
+            onClosed={() => onModalClose(id)}
+            modal={modal}
+          />
+        )
+      })
     }
   }
 
   const mapStateToProps = state => {
     const modals = getSignal(state)
 
-    const rawModal = Map(
-      modals.map(modal => {
-        return [
-          modal.get('id'),
-          getModal(getSignalInstanceId(modal.get('id')))(state)
-        ]
-      })
-    )
+    const rawModal = Map(modals.map(modal => [
+      modal.get('id'),
+      getModal(getSignalInstanceId(modal.get('id')))(state)
+    ]))
 
     const eventFeedback = Map(
       modals.map(modal => {
@@ -98,7 +90,10 @@ const createContainer = ({ Modal }) => {
           }
         }
 
-        return [modal.get('id'), feedback]
+        return [
+          modal.get('id'),
+          feedback
+        ]
       })
     )
 
@@ -168,7 +163,7 @@ const createContainer = ({ Modal }) => {
       updateModals: () => {
         modals.forEach(modal => {
           const modalId = modal.get('id')
-          const { state } = rawModal.get(modalId)
+          const state = rawModal.getIn([modalId, 'state'])
 
           switch (state) {
             case ModalStates.CREATED:
@@ -180,9 +175,11 @@ const createContainer = ({ Modal }) => {
     }
   }
 
-  return connect(mapStateToProps, mapDispatchToProps, mergeProps)(
-    SignalContainer
-  )
+  return connect(
+    mapStateToProps,
+    mapDispatchToProps,
+    mergeProps
+  )(SignalContainer)
 }
 
 export default createContainer

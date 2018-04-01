@@ -1,24 +1,22 @@
 import { fromJS } from 'immutable'
 import { uid } from './utils'
 import * as ModalStates from './constants/ModalStates'
+import * as ModalSeverity from './constants/ModalSeverity'
 import * as ActionTypes from './constants/ActionTypes'
 
 const __DEV__ = process.env.NODE_ENV === 'development'
 
 export const createSignal = ({
-  severity,
+  severity = ModalSeverity.INFO,
   type,
   title,
   message,
   isRequired = false,
   eventHandler,
-  labels = {}
+  labels = {},
+  payload = {}
 }) => {
   if (__DEV__) {
-    if (!severity) {
-      throw new Error('Signal requires a `severity`')
-    }
-
     if (!type) {
       throw new Error('Signal requires a `type`')
     }
@@ -35,7 +33,8 @@ export const createSignal = ({
       title,
       message,
       isRequired,
-      labels
+      labels,
+      payload
     })
   }
 }

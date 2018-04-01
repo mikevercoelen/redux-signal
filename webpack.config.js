@@ -44,7 +44,16 @@ const reselectExternal = {
   amd: 'reselect'
 }
 
+const rules = []
+
+rules.push({
+  test: /\.js$/,
+  loader: 'babel-loader',
+  exclude: /node_modules/
+})
+
 const config = {
+  mode: env,
   externals: {
     react: reactExternal,
     redux: reduxExternal,
@@ -54,9 +63,7 @@ const config = {
     'prop-types': propTypesExternal
   },
   module: {
-    loaders: [
-      { test: /\.js$/, loaders: ['babel-loader'], exclude: /node_modules/ }
-    ]
+    rules
   },
   output: {
     library: 'ReduxSignal',
@@ -68,19 +75,6 @@ const config = {
       'process.env.NODE_ENV': JSON.stringify(env)
     })
   ]
-}
-
-if (env === 'production') {
-  config.plugins.push(
-    new webpack.optimize.UglifyJsPlugin({
-      compressor: {
-        pure_getters: true,
-        unsafe: true,
-        unsafe_comps: true,
-        warnings: false
-      }
-    })
-  )
 }
 
 module.exports = config

@@ -1,5 +1,10 @@
 import {
+  showModal,
+  getHasVisibleModal,
   withSignal,
+  withSignalPropTypes,
+  withModal,
+  withModalPropTypes,
   eventHandler,
   reducer,
   createContainer,
@@ -10,8 +15,24 @@ import {
 } from '../index'
 
 describe('index', () => {
+  it('should export getHasVisibleModal', () => {
+    expect(typeof getHasVisibleModal).toBe('function')
+  })
+
   it('should export withSignal', () => {
     expect(typeof withSignal).toBe('function')
+  })
+
+  it('should export withSignalPropTypes', () => {
+    expect(typeof withSignalPropTypes).toBe('object')
+  })
+
+  it('should export withModal', () => {
+    expect(typeof withModal).toBe('function')
+  })
+
+  it('should export withModalPropTypes', () => {
+    expect(typeof withModalPropTypes).toBe('object')
   })
 
   it('should export eventHandler', () => {
@@ -40,5 +61,9 @@ describe('index', () => {
 
   it('should export ModalEvents', () => {
     expect(typeof ModalEvents).toBe('object')
+  })
+
+  it('should export showModal', () => {
+    expect(typeof showModal).toBe('function')
   })
 })
