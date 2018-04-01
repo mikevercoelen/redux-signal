@@ -5,8 +5,7 @@
 ---
 
 [![NPM Version](https://img.shields.io/npm/v/redux-signal.svg?style=flat)](https://www.npmjs.com/package/redux-signal)
-[![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 
 ## Installation
 
-`npm install --save redux-signal`
+`npm install redux-signal --save`
