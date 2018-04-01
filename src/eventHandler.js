@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import { uid } from './utils'
 
 import { eventQueueShift, queueDestroy } from './actions'
-import { getModalEvents } from './selectors'
+import { getModalEvents, getPayloadByEventQueueId } from './selectors'
 import * as ModalEvents from './constants/ModalEvents'
 
 const eventHandler = () => {
@@ -15,10 +15,12 @@ const eventHandler = () => {
       destroyQueue: PropTypes.func.isRequired,
 
       /* eslint-disable react/no-unused-prop-types */
+      handledEvent: PropTypes.func.isRequired,
       onOk: PropTypes.func,
       onCancel: PropTypes.func,
       onYes: PropTypes.func,
-      onNo: PropTypes.func
+      onNo: PropTypes.func,
+      payload: PropTypes.object
       /* eslint-enable */
     }
 
@@ -35,8 +37,11 @@ const eventHandler = () => {
     }
 
     callHandler = handler => {
+      const { payload } = this.props
+      const args = payload ? payload.toJS() : {}
+
       if (handler) {
-        handler()
+        handler(args)
       }
     }
 
@@ -65,7 +70,8 @@ const eventHandler = () => {
     const event = events ? events.first() : null
 
     return {
-      event
+      event,
+      payload: getPayloadByEventQueueId(eventQueueId)(state)
     }
   }
 

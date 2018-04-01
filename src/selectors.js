@@ -74,3 +74,24 @@ export const getModalEvents = createSelector(
       eventQueue => eventQueue.get(eventQueueId)
     )
 )
+
+export const getPayloadByEventQueueId = createSelector(
+  eventQueueId => eventQueueId,
+  eventQueueId =>
+    createSelector(
+      state => state.signal.getIn(['signal', 'data']),
+      data => {
+        if (!data) {
+          return null
+        }
+
+        for (const value of data.valueSeq()) {
+          if (value.get('eventHandlerId') === eventQueueId) {
+            return value.get('payload')
+          }
+        }
+
+        return null
+      }
+    )
+)
