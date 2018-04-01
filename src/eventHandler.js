@@ -15,10 +15,10 @@ const eventHandler = () => {
       destroyQueue: PropTypes.func.isRequired,
 
       /* eslint-disable react/no-unused-prop-types */
-      onOkButton: PropTypes.func,
-      onCancelButton: PropTypes.func,
-      onYesButton: PropTypes.func,
-      onNoButton: PropTypes.func
+      onOk: PropTypes.func,
+      onCancel: PropTypes.func,
+      onYes: PropTypes.func,
+      onNo: PropTypes.func
       /* eslint-enable */
     }
 
@@ -43,10 +43,10 @@ const eventHandler = () => {
     processEvents (props) {
       if (props.event) {
         const handlers = {
-          [ModalEvents.BTN_OK]: props.onOkButton,
-          [ModalEvents.BTN_CANCEL]: props.onCancelButton,
-          [ModalEvents.BTN_YES]: props.onYesButton,
-          [ModalEvents.BTN_NO]: props.onNoButton,
+          [ModalEvents.BTN_OK]: props.onOk,
+          [ModalEvents.BTN_CANCEL]: props.onCancel,
+          [ModalEvents.BTN_YES]: props.onYes,
+          [ModalEvents.BTN_NO]: props.onNo,
           [ModalEvents.CLOSE]: props.onClose
         }
 
