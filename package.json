@@ -50,10 +50,6 @@
   "homepage": "https://github.com/mikevercoelen/redux-signal#readme",
   "dependencies": {
     "deep-equal": "^1.0.1",
-    "es6-error": "^4.1.1",
-    "hoist-non-react-statics": "^2.5.0",
-    "invariant": "^2.2.4",
-    "is-promise": "^2.1.0",
     "lodash": "^4.17.5",
     "lodash-es": "^4.17.8",
     "lru-memoize": "^1.0.2",
@@ -91,6 +87,7 @@
     "husky": "^0.14.3",
     "immutable": "^3.8.2",
     "jest": "^22.4.3",
+    "jest-immutable-matchers": "^2.0.1",
     "lint-staged": "^7.0.2",
     "lodash-webpack-plugin": "^0.11.4",
     "npm-watch": "^0.3.0",
