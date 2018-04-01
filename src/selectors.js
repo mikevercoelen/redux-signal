@@ -1,6 +1,5 @@
 import { createSelector, createSelectorCreator } from 'reselect'
 import lrumemoize from 'lru-memoize'
-import { Map } from 'immutable'
 
 import * as ModalStates from './constants/ModalStates'
 
@@ -20,13 +19,13 @@ export const getModal = customSelectorCreator(
         const modalState = state.get(instanceId)
 
         if (!modalState) {
-          return Map({
+          return {
             data: null,
             isBusy: false,
             isFirst: false,
             isVisible: false,
             state: null
-          })
+          }
         }
 
         let firstVisibleModal = null
@@ -37,13 +36,14 @@ export const getModal = customSelectorCreator(
           }
         }
 
-        return Map({
+        return {
+          instanceId,
           data: modalState.get('data'),
           isBusy: modalState.get('isBusy'),
           isFirst: firstVisibleModal === instanceId,
           isVisible: modalState.get('state') === ModalStates.VISIBLE,
           state: modalState.get('state')
-        })
+        }
       }
     )
 )
@@ -75,7 +75,7 @@ export const getModalEvents = createSelector(
     )
 )
 
-export const getPayloadByEventQueueId = createSelector(
+export const getModalByEventQueueId = createSelector(
   eventQueueId => eventQueueId,
   eventQueueId =>
     createSelector(
@@ -87,7 +87,7 @@ export const getPayloadByEventQueueId = createSelector(
 
         for (const value of data.valueSeq()) {
           if (value.get('eventHandlerId') === eventQueueId) {
-            return value.get('payload')
+            return value
           }
         }
 

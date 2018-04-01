@@ -1,7 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
-import { Map } from 'immutable'
 
 import {
   createModal,
@@ -18,7 +17,7 @@ export const withModalPropTypes = {
   destroy: PropTypes.func.isRequired,
   hide: PropTypes.func.isRequired,
   setBusy: PropTypes.func.isRequired,
-  modal: PropTypes.instanceOf(Map).isRequired
+  modal: PropTypes.object.isRequired
 }
 
 const withModal = WrappedComponent => {

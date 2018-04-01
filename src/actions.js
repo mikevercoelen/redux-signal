@@ -13,8 +13,7 @@ export const createSignal = ({
   message,
   isRequired = false,
   eventHandler,
-  labels = {},
-  payload = {}
+  labels = {}
 }) => {
   if (__DEV__) {
     if (!type) {
@@ -33,8 +32,7 @@ export const createSignal = ({
       title,
       message,
       isRequired,
-      labels,
-      payload
+      labels
     })
   }
 }
@@ -77,7 +75,7 @@ export const setSignalState = (id, state) => ({
   value: state
 })
 
-export const modalEvent = (id, type) => ({
+export const signalEvent = (id, type) => ({
   type: ActionTypes.SIGNAL_EVENT,
   id: id,
   event: {

@@ -7,7 +7,7 @@ import { getSignalInstanceId } from './utils'
 
 import {
   destroySignal,
-  modalEvent,
+  signalEvent,
   setSignalState,
   feedbackQueueShift
 } from './actions'
@@ -54,8 +54,8 @@ const createContainer = ({ Modal }) => {
             key={`signal-${id}`}
             onModalEvent={onModalEvent}
             toggle={() => onModalExited(id)}
-            isFirst={currentRawModal.get('isFirst')}
-            isOpen={currentRawModal.get('isVisible')}
+            isFirst={currentRawModal.isFirst}
+            isOpen={currentRawModal.isVisible}
             isRequired={modal.get('isRequired')}
             onClosed={() => onModalClose(id)}
             modal={modal}
@@ -113,7 +113,7 @@ const createContainer = ({ Modal }) => {
       },
 
       onModalClose: modalId => {
-        dispatch(modalEvent(modalId, ModalEvents.CLOSE))
+        dispatch(signalEvent(modalId, ModalEvents.CLOSE))
         dispatch(setSignalState(modalId, ModalStates.DESTROYED))
       }
     }
@@ -141,7 +141,7 @@ const createContainer = ({ Modal }) => {
 
           // By default, BTN_* events trigger modal close
           if (event.type.startsWith('BTN_')) {
-            dispatch(modalEvent(modalId, ModalEvents.CLOSE))
+            dispatch(signalEvent(modalId, ModalEvents.CLOSE))
             dispatch(setSignalState(modalId, ModalStates.DESTROYED))
           }
         })
@@ -151,7 +151,7 @@ const createContainer = ({ Modal }) => {
         const modalId = modal.get('id')
 
         if (modal.get('eventHandlerId')) {
-          dispatch(modalEvent(modalId, eventType))
+          dispatch(signalEvent(modalId, eventType))
         } else {
           // If we do not have an event handler, just close the modal on any button
           if (eventType.startsWith('BTN_')) {
@@ -163,7 +163,7 @@ const createContainer = ({ Modal }) => {
       updateModals: () => {
         modals.forEach(modal => {
           const modalId = modal.get('id')
-          const state = rawModal.getIn([modalId, 'state'])
+          const state = rawModal.getIn([modalId]).state
 
           switch (state) {
             case ModalStates.CREATED:
