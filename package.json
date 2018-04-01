@@ -1,7 +1,7 @@
 {
   "name": "redux-signal",
   "version": "0.0.2",
-  "description": "A scalable solution for modal notifications using React and Redux",
+  "description": "A scalable solution for modals using React and Redux",
   "main": "./lib/index.js",
   "module": "./es/index.js",
   "jsnext:main": "./es/index.js",
