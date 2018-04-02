@@ -13,6 +13,10 @@ export {
 } from './actions'
 
 export {
+  getModal,
+  getSignal,
+  getModalByEventQueueId,
+  getModalEvents,
   getHasVisibleModal
 } from './selectors'
 
