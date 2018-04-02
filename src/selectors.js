@@ -3,8 +3,7 @@ import lrumemoize from 'lru-memoize'
 
 import * as ModalStates from './constants/ModalStates'
 
-// 8 seems to be a reasonable default, increase if you
-// have more modals within a container
+// TODO: make this configurable? 8 seems to be a reasonable default
 const customSelectorCreator = createSelectorCreator(
   (s, n) => lrumemoize(n)(s),
   8
