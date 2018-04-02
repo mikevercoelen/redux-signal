@@ -30,6 +30,10 @@ export {
   isModalPropTypes
 } from './isModal'
 
+export {
+  getSignalInstanceId
+} from './utils'
+
 export { default as eventHandler } from './eventHandler'
 export { default as reducer } from './reducer'
 export { default as createContainer } from './createContainer'
