@@ -17,9 +17,9 @@ export {
 } from './withSignal'
 
 export {
-  default as withModal,
-  withModalPropTypes
-} from './withModal'
+  default as isModal,
+  isModalPropTypes
+} from './isModal'
 
 export { default as eventHandler } from './eventHandler'
 export { default as reducer } from './reducer'
