@@ -1,6 +1,6 @@
 {
   "name": "redux-signal",
-  "version": "0.0.3",
+  "version": "1.0.1",
   "description": "A scalable solution for modals using React and Redux",
   "main": "./lib/index.js",
   "module": "./es/index.js",
