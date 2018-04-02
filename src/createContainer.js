@@ -52,13 +52,13 @@ const createContainer = ({ Modal }) => {
         return (
           <Modal
             key={`signal-${id}`}
-            onModalEvent={onModalEvent}
-            toggle={() => onModalExited(id)}
-            isFirst={currentRawModal.isFirst}
-            isOpen={currentRawModal.isVisible}
-            isRequired={modal.get('isRequired')}
-            onClosed={() => onModalClose(id)}
-            modal={modal}
+            event={onModalEvent}
+            exit={() => onModalExited(id)}
+            close={() => onModalClose(id)}
+            modal={{
+              ...modal.toJS(),
+              ...currentRawModal
+            }}
           />
         )
       })
@@ -148,9 +148,9 @@ const createContainer = ({ Modal }) => {
       },
 
       onModalEvent: (modal, eventType) => {
-        const modalId = modal.get('id')
+        const modalId = modal.id
 
-        if (modal.get('eventHandlerId')) {
+        if (modal.eventHandlerId) {
           dispatch(signalEvent(modalId, eventType))
         } else {
           // If we do not have an event handler, just close the modal on any button
