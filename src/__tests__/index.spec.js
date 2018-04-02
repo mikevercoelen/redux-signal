@@ -3,8 +3,8 @@ import {
   getHasVisibleModal,
   withSignal,
   withSignalPropTypes,
-  withModal,
-  withModalPropTypes,
+  isModal,
+  isModalPropTypes,
   eventHandler,
   reducer,
   createContainer,
@@ -27,12 +27,12 @@ describe('index', () => {
     expect(typeof withSignalPropTypes).toBe('object')
   })
 
-  it('should export withModal', () => {
-    expect(typeof withModal).toBe('function')
+  it('should export isModal', () => {
+    expect(typeof isModal).toBe('function')
   })
 
-  it('should export withModalPropTypes', () => {
-    expect(typeof withModalPropTypes).toBe('object')
+  it('should export isModalPropTypes', () => {
+    expect(typeof isModalPropTypes).toBe('object')
   })
 
   it('should export eventHandler', () => {
