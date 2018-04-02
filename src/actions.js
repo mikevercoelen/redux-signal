@@ -1,7 +1,7 @@
 import { fromJS } from 'immutable'
 import { uid } from './utils'
 import * as ModalStates from './constants/ModalStates'
-import * as ModalSeverity from './constants/ModalSeverity'
+import * as ModalSeverity from './constants/SignalSeverity'
 import * as ActionTypes from './constants/ActionTypes'
 
 const __DEV__ = process.env.NODE_ENV === 'development'

@@ -1,6 +1,6 @@
-import * as ModalEvents from './constants/ModalEvents'
-import * as ModalSeverity from './constants/ModalSeverity'
-import * as ModalTypes from './constants/ModalTypes'
+import * as ModalEvents from './constants/SignalEvents'
+import * as ModalSeverity from './constants/SignalSeverity'
+import * as ModalTypes from './constants/SignalTypes'
 import * as ModalStates from './constants/ModalStates'
 
 export {

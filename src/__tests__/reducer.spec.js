@@ -1,8 +1,8 @@
 import * as matchers from 'jest-immutable-matchers'
 import reducer, { initialState } from '../reducer'
 import { createSignal } from '../actions'
-import * as ModalSeverity from '../constants/ModalSeverity'
-import * as ModalTypes from '../constants/ModalTypes'
+import * as ModalSeverity from '../constants/SignalSeverity'
+import * as ModalTypes from '../constants/SignalTypes'
 
 describe('reducer', () => {
   beforeEach(function () {

@@ -5,7 +5,7 @@ import { uid } from './utils'
 
 import { eventQueueShift, queueDestroy } from './actions'
 import { getModalEvents, getModalByEventQueueId } from './selectors'
-import * as ModalEvents from './constants/ModalEvents'
+import * as ModalEvents from './constants/SignalEvents'
 
 const eventHandler = () => {
   const eventQueueId = uid(10)

@@ -12,7 +12,7 @@ import {
   feedbackQueueShift
 } from './actions'
 
-import * as ModalEvents from './constants/ModalEvents'
+import * as ModalEvents from './constants/SignalEvents'
 import * as ModalStates from './constants/ModalStates'
 
 const createContainer = ({ Modal }) => {
