@@ -4,7 +4,12 @@ import * as ModalTypes from './constants/ModalTypes'
 import * as ModalStates from './constants/ModalStates'
 
 export {
-  showModal
+  showModal,
+  hideModal,
+  setModalBusy,
+  destroySignal,
+  signalEvent,
+  setSignalState
 } from './actions'
 
 export {
