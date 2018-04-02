@@ -4,10 +4,19 @@ import * as ModalTypes from './constants/ModalTypes'
 import * as ModalStates from './constants/ModalStates'
 
 export {
-  showModal
+  showModal,
+  hideModal,
+  setModalBusy,
+  destroySignal,
+  signalEvent,
+  setSignalState
 } from './actions'
 
 export {
+  getModal,
+  getSignal,
+  getModalByEventQueueId,
+  getModalEvents,
   getHasVisibleModal
 } from './selectors'
 
@@ -17,9 +26,13 @@ export {
 } from './withSignal'
 
 export {
-  default as withModal,
-  withModalPropTypes
-} from './withModal'
+  default as isModal,
+  isModalPropTypes
+} from './isModal'
+
+export {
+  getSignalInstanceId
+} from './utils'
 
 export { default as eventHandler } from './eventHandler'
 export { default as reducer } from './reducer'

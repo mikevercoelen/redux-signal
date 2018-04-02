@@ -11,7 +11,7 @@ import {
 
 import { getModal } from './selectors'
 
-export const withModalPropTypes = {
+export const isModalPropTypes = {
   instanceId: PropTypes.string.isRequired,
   create: PropTypes.func.isRequired,
   destroy: PropTypes.func.isRequired,
@@ -20,9 +20,9 @@ export const withModalPropTypes = {
   modal: PropTypes.object.isRequired
 }
 
-const withModal = WrappedComponent => {
+const isModal = WrappedComponent => {
   const Component = class extends React.Component {
-    static propTypes = withModalPropTypes
+    static propTypes = isModalPropTypes
 
     componentWillMount () {
       this.props.create()
@@ -54,4 +54,4 @@ const withModal = WrappedComponent => {
   )(Component)
 }
 
-export default withModal
+export default isModal
