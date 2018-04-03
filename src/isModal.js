@@ -33,7 +33,23 @@ const isModal = WrappedComponent => {
     }
 
     render () {
-      return <WrappedComponent {...this.props} />
+      const {
+        instanceId,
+        destroy,
+        hide,
+        setBusy,
+        modal
+      } = this.props
+
+      const componentProps = {
+        instanceId,
+        destroy,
+        hide,
+        setBusy,
+        modal
+      }
+
+      return <WrappedComponent {...componentProps} />
     }
   }
 

@@ -109,7 +109,7 @@ export default function reduxSignalReducer (state = initialState, action) {
       return signalCreate(state, action)
     case ActionTypes.SIGNAL_DESTROY:
       return signalDestroy(state, action)
-    case ActionTypes.SIGNAL_SET_STATE:
+    case ActionTypes.MODAL_SET_STATE:
       return signalSetState(state, action)
     case ActionTypes.SIGNAL_EVENT:
       return signalEvent(state, action)

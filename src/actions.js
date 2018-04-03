@@ -60,8 +60,8 @@ export const destroySignal = id => ({
   id: id
 })
 
-export const setSignalState = (id, state) => ({
-  type: ActionTypes.SIGNAL_SET_STATE,
+export const setModalState = (id, state) => ({
+  type: ActionTypes.MODAL_SET_STATE,
   id: id,
   value: state
 })

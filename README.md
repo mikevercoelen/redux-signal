@@ -30,7 +30,6 @@ class ProfileView extends React.Component {
   }
 }
 
-// withSignal HoC
 export default withSignal(ProfileView)
 ```
 
@@ -43,10 +42,12 @@ export default withSignal(ProfileView)
   - [Reducer](#reducer-setup)
   - [SignalContainer](#signalcontainer-setup)
 - [API](#api)
-  - [`withSignal`](#with-signal)
-  - [`createSignal`](#create-signal)
-  - [`SignalTypes`](#signal-types)
-  - [`SignalEvents`](#signal-events)
+  - [`withSignal`](#withsignalcomponent)
+  - [`createSignal`](#createsignaloptions)
+  - [`isModal`](#ismodalcomponent)
+  - [`showModal`](#showmodal)
+  - [`SignalTypes`](#signaltypes)
+  - [`SignalEvents`](#signalevents)
 
 ## Installation
 
@@ -198,24 +199,33 @@ export default createContainer(Modal)
 
 ### withSignal(Component)
 
-`withSignal` is a high order component that gives the component following props:
+If you want to show a signal or a modal, you need to wrap the component with the `withSignal` hoc. which gives the component the following props:
 
-* `createSignal`: creates a signal modal see [`createSignal`](#create-signal).
-* `setSignalState`: sets a signals state
+* `createSignal`: creates a signal modal see [`createSignal`](#createsignaloptions).
+* `showModal(instanceId)`: show a modal
+* `hideModal(instanceId`: hide a model
+
+#### Low-level
+* `setModalState`: sets a modal state
 * `signalEvent`: dispatch a signal event
-* `showModal`: show a modal
-* `hideModal`: hide a model
-
-You can use `withSignal` for different kind of situations, but if you want to simply display a notification, the only thing you need is `createSignal`.
 
 ### createSignal(options)
 
 Creates and shows a signal.
 
 #### options
-* `type`: (required) [`SignalTypes`](#signal-types)
+* `type`: (required) [`SignalTypes`](#signaltypes)
 * `eventHandler`: (optional) insert an event handler
 * `...props`: (optional) all the extra props you pass in `createSignal` can be used in your `SignalContainer` to display a modal, a common situation would be to add `isRequired` and you handle this value in your `SignalContainer` to toggle your modal close button. Other props: title, message etc.
+
+### isModal(Component)
+
+Use `isModal` to create a modal, so remember the difference between a signal and a modal: a signal is simple, less flexible, a modal gives you full control. `isModal` is a hoc that gives the component the following props:
+* `instanceId`: string
+* `hide`: function that hides the modal
+* `destroy`: function that destroys the modal
+* `setBusy`: function to set busy state of the modal (can be used for showing loaders etc.)
+* `modal`: modal object
 
 ### SignalEvents
 
@@ -231,7 +241,17 @@ You use this in your `SignalContainer` to render different buttons in your foote
 
 ### SignalTypes
 
+An enum of Signal types, you need a type when calling `createSignal`, use a SignalType here
+
 * `OK`: modal with ok button
 * `OK_CANCEL`: modal with ok + cancel button
 * `YES_NO`: modal with yes + no button
 * `YES_NO_CANCEL`: modal with yes no cancel button
+
+### ModalStates
+
+An enum of Signal types, you need a type when calling `createSignal`, use a SignalType here
+
+* `CREATED`: the modal is initialized (in the dom) but not visible
+* `VISIBLE`: is visible
+* `DESTROYED`: destroyed, modal is removed from the dom

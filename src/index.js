@@ -8,7 +8,7 @@ export {
   setModalBusy,
   destroySignal,
   signalEvent,
-  setSignalState
+  setModalState
 } from './actions'
 
 export {

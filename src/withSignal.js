@@ -2,7 +2,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import {
   createSignal,
-  setSignalState,
+  setModalState,
   signalEvent,
   showModal,
   hideModal
@@ -19,7 +19,7 @@ export const withSignalPropTypes = {
 const withSignal = Component => {
   const mapDispatchToProps = {
     createSignal,
-    setSignalState,
+    setModalState,
     signalEvent,
     showModal,
     hideModal

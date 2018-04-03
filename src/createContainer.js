@@ -8,7 +8,7 @@ import { getSignalInstanceId } from './utils'
 import {
   destroySignal,
   signalEvent,
-  setSignalState,
+  setModalState,
   feedbackQueueShift
 } from './actions'
 
@@ -114,7 +114,7 @@ const createContainer = Modal => {
 
       onModalClose: modalId => {
         dispatch(signalEvent(modalId, ModalEvents.CLOSE))
-        dispatch(setSignalState(modalId, ModalStates.DESTROYED))
+        dispatch(setModalState(modalId, ModalStates.DESTROYED))
       }
     }
   }
@@ -142,7 +142,7 @@ const createContainer = Modal => {
           // By default, BTN_* events trigger modal close
           if (event.type.startsWith('BTN_')) {
             dispatch(signalEvent(modalId, ModalEvents.CLOSE))
-            dispatch(setSignalState(modalId, ModalStates.DESTROYED))
+            dispatch(setModalState(modalId, ModalStates.DESTROYED))
           }
         })
       },
@@ -155,7 +155,7 @@ const createContainer = Modal => {
         } else {
           // If we do not have an event handler, just close the modal on any button
           if (eventType.startsWith('BTN_')) {
-            dispatch(setSignalState(modalId, ModalStates.DESTROYED))
+            dispatch(setModalState(modalId, ModalStates.DESTROYED))
           }
         }
       },
@@ -167,7 +167,7 @@ const createContainer = Modal => {
 
           switch (state) {
             case ModalStates.CREATED:
-              dispatch(setSignalState(modalId, ModalStates.VISIBLE))
+              dispatch(setModalState(modalId, ModalStates.VISIBLE))
               break
           }
         })
