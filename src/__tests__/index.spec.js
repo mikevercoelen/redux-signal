@@ -8,10 +8,9 @@ import {
   eventHandler,
   reducer,
   createContainer,
-  ModalSeverity,
   ModalStates,
-  ModalEvents,
-  ModalTypes
+  SignalEvents,
+  SignalTypes
 } from '../index'
 
 describe('index', () => {
@@ -47,20 +46,16 @@ describe('index', () => {
     expect(typeof createContainer).toBe('function')
   })
 
-  it('should export ModalSeverity', () => {
-    expect(typeof ModalSeverity).toBe('object')
-  })
-
   it('should export ModalStates', () => {
     expect(typeof ModalStates).toBe('object')
   })
 
-  it('should export ModalTypes', () => {
-    expect(typeof ModalTypes).toBe('object')
+  it('should export SignalEvents', () => {
+    expect(typeof SignalEvents).toBe('object')
   })
 
-  it('should export ModalEvents', () => {
-    expect(typeof ModalEvents).toBe('object')
+  it('should export SignalTypes', () => {
+    expect(typeof SignalTypes).toBe('object')
   })
 
   it('should export showModal', () => {

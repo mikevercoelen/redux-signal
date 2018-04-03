@@ -1,19 +1,14 @@
 import { fromJS } from 'immutable'
 import { uid } from './utils'
 import * as ModalStates from './constants/ModalStates'
-import * as ModalSeverity from './constants/SignalSeverity'
 import * as ActionTypes from './constants/ActionTypes'
 
 const __DEV__ = process.env.NODE_ENV === 'development'
 
 export const createSignal = ({
-  severity = ModalSeverity.INFO,
   type,
-  title,
-  message,
-  isRequired = false,
   eventHandler,
-  labels = {}
+  ...props
 }) => {
   if (__DEV__) {
     if (!type) {
@@ -25,14 +20,10 @@ export const createSignal = ({
     type: ActionTypes.SIGNAL_CREATE,
     modal: fromJS({
       id: uid(10),
+      type,
       eventHandlerId: eventHandler ? eventHandler.eventQueueId : null,
       state: ModalStates.CREATED,
-      severity,
-      type,
-      title,
-      message,
-      isRequired,
-      labels
+      ...props
     })
   }
 }

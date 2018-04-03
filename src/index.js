@@ -1,6 +1,5 @@
-import * as ModalEvents from './constants/SignalEvents'
-import * as ModalSeverity from './constants/SignalSeverity'
-import * as ModalTypes from './constants/SignalTypes'
+import * as SignalEvents from './constants/SignalEvents'
+import * as SignalTypes from './constants/SignalTypes'
 import * as ModalStates from './constants/ModalStates'
 
 export {
@@ -39,8 +38,7 @@ export { default as reducer } from './reducer'
 export { default as createContainer } from './createContainer'
 
 export {
-  ModalEvents,
-  ModalSeverity,
-  ModalTypes,
+  SignalEvents,
+  SignalTypes,
   ModalStates
 }

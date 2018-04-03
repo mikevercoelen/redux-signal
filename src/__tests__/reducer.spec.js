@@ -1,8 +1,7 @@
 import * as matchers from 'jest-immutable-matchers'
 import reducer, { initialState } from '../reducer'
 import { createSignal } from '../actions'
-import * as ModalSeverity from '../constants/SignalSeverity'
-import * as ModalTypes from '../constants/SignalTypes'
+import * as SignalTypes from '../constants/SignalTypes'
 
 describe('reducer', () => {
   beforeEach(function () {
@@ -17,8 +16,7 @@ describe('reducer', () => {
 
   it('should handle createSignal', () => {
     const createSignalData = {
-      severity: ModalSeverity.INFO,
-      type: ModalTypes.OK,
+      type: SignalTypes.OK,
       title: 'test',
       message: 'test'
     }

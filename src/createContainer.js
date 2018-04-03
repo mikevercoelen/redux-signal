@@ -15,7 +15,7 @@ import {
 import * as ModalEvents from './constants/SignalEvents'
 import * as ModalStates from './constants/ModalStates'
 
-const createContainer = ({ Modal }) => {
+const createContainer = Modal => {
   class SignalContainer extends React.Component {
     static propTypes = {
       updateModals: PropTypes.func.isRequired,
@@ -53,7 +53,7 @@ const createContainer = ({ Modal }) => {
           <Modal
             key={`signal-${id}`}
             event={onModalEvent}
-            exit={() => onModalExited(id)}
+            destroy={() => onModalExited(id)}
             close={() => onModalClose(id)}
             modal={{
               ...modal.toJS(),
