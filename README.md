@@ -1,4 +1,4 @@
-[<img src="https://raw.githubusercontent.com/mikevercoelen/redux-signal/master/logo.png" class="logo" height="100" width="165"/>](http://mikevercoelen.github.io/redux-signal/)
+[<img src="https://raw.githubusercontent.com/mikevercoelen/redux-signal/master/logo.png" class="logo" height="90" width="150"/>](http://mikevercoelen.github.io/redux-signal/)
 
 # Redux Signal
 
@@ -56,11 +56,15 @@ export default withSignal(ProfileView)
 ## Introduction
 
 ### The problem
-It's hard to setup a flexible and scalable modal solution with Redux and React. Most of our apps need simple modals such as confirms, warnings etc. but we also need modals for more advanced stuff like forms.
+Setting up a flexible solution for modals with Redux is hard. Our apps mostly need 2 types of modals: simple modals (such as confirms / warnings etc.) and custom modals.
 
-Besides that, we want our Redux state to be serializable (so no fn's in our state etc.) and clean.
+We might need multiple modals open at once, so we need some stacking order and we only want to display one overlay component.
 
-Redux-signal is a flexible library for exactly that. Redux-signal does not contain any Modal components with styling etc. It's only a solution purely for redux and your modal states, data, actions etc.
+So meet Redux Signal, hi.
+
+Redux Signal is a library that provides you all the boilerplate and code setup you need to setup your modal, however you still need your own Modal component for styling.
+
+We recommend [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit).
 
 ## Setup
 
