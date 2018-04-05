@@ -7,6 +7,10 @@ Flexible, scalable library for creating modals with React and Redux.
 * `signals`: small, quick notification modals (confirmations, alerts etc.)
 * `modals`: fully customizable modals for your forms etc.
 
+## Demo
+
+[mikevercoelen.github.io/redux-signal](http://mikevercoelen.github.io/redux-signal/)
+
 ```js
 import React from 'react'
 import { withSignal, SignalTypes } from 'redux-signal'
