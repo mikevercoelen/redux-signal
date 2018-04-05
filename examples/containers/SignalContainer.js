@@ -22,8 +22,7 @@ const SignalModal = ({
     <Modal
       isOpen={modal.isVisible}
       title={modal.title}
-      onClose={close}
-      onClickOutside={close}
+      onClosed={close}
       footer={getFooter(modal, eventType => event(modal, eventType))}>
       {modal.message}
     </Modal>

@@ -20,6 +20,8 @@ const ModalLogin = ({
 
   return (
     <Modal
+      onClosed={close}
+      onClickOutside={close}
       dialogClassName={styles.modalDialog}
       isOpen={modal.isVisible}
       title='Login'>

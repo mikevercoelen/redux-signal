@@ -5,7 +5,7 @@ import { connect } from 'react-redux'
 import { getHasVisibleModal } from '../../src/index'
 
 const SignalOverlayContainer = ({ isVisible }) => (
-  <Overlay isVisible={isVisible} />
+  <Overlay isVisible={isVisible} opacity={0.85} />
 )
 
 SignalOverlayContainer.propTypes = {
