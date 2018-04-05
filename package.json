@@ -28,7 +28,8 @@
     "test:cov": "npm run test -- --coverage",
     "examples": "cross-env NODE_ENV=development webpack-dev-server --config=./examples/webpack.config.js",
     "examples:build": "cross-env NODE_ENV=production webpack --config=./examples/webpack.config.js",
-    "deploy": "npm run examples:build && gulp deploy"
+    "deploy": "npm run examples:build && gulp deploy",
+    "prepush": "npm run test"
   },
   "watch": {
     "build": "src/**/*.js"

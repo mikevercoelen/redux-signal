@@ -28,6 +28,6 @@ describe('reducer', () => {
     expect(resultJs).toHaveProperty('signal.data')
     expect(resultJs).toHaveProperty('signal.eventQueue')
     expect(resultJs).toHaveProperty('signal.feedbackQueue')
-    expect(resultJs).toHaveProperty('modal')
+    expect(resultJs).toHaveProperty('modals')
   })
 })
