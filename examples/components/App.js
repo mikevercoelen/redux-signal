@@ -8,9 +8,9 @@ import {
   eventHandler
 } from '../../src/index'
 
-const KillTheWorldEvent = eventHandler('@app/kill-the-world')
+const KillTheWorldEvent = eventHandler()
 
-const App = ({ createSignal, hideModal }) => {
+const App = ({ createSignal }) => {
   const onBtnKillClick = () => {
     createSignal({
       type: SignalTypes.YES_NO,
@@ -24,14 +24,12 @@ const App = ({ createSignal, hideModal }) => {
     })
   }
 
-  const onYes = (args) => {
-    console.log(args)
-    // window.alert('You just killed everyone, are you proud?')
-    // hideModal(args.id)
+  const onYes = () => {
+    console.log('You killed everyone, you must be proud.')
   }
 
   const onNo = () => {
-    // window.alert('Heh, thank god. We need more people like you.')
+    console.log('That was close, we need more people like you.')
   }
 
   return (
