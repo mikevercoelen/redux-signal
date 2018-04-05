@@ -5,7 +5,7 @@ import { Provider } from 'react-redux'
 import rootReducer from './reducers'
 import SignalContainer from './containers/SignalContainer'
 import SignalOverlay from './containers/SignalOverlayContainer'
-import App from './App'
+import App from './components/App/App'
 import './index.scss'
 
 const store = createStore(
