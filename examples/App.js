@@ -1,5 +1,6 @@
 import React from 'react'
 import Button from './components/Button/Button'
+import ModalLogin from './components/ModalLogin/ModalLogin'
 
 import {
   withSignal,
@@ -8,9 +9,10 @@ import {
   eventHandler
 } from '../src/index'
 
+const modalLoginId = '@app/modal-login'
 const KillTheWorldEvent = eventHandler()
 
-const App = ({ createSignal }) => {
+const App = ({ createSignal, showModal }) => {
   const onBtnKillClick = () => {
     createSignal({
       type: SignalTypes.YES_NO,
@@ -24,6 +26,10 @@ const App = ({ createSignal }) => {
     })
   }
 
+  const onBtnLoginClick = () => {
+    showModal(modalLoginId)
+  }
+
   const onYes = () => {
     console.log('You killed everyone, you must be proud.')
   }
@@ -34,14 +40,30 @@ const App = ({ createSignal }) => {
 
   return (
     <div>
-      <Button
-        primary
-        onClick={onBtnKillClick}>
-        Kill the world
-      </Button>
-      <KillTheWorldEvent
-        onNo={onNo}
-        onYes={onYes} />
+      <div>
+        <h1>
+          Signals
+        </h1>
+        <Button
+          primary
+          onClick={onBtnKillClick}>
+          Kill the world
+        </Button>
+      </div>
+      <div>
+        <h1>
+          Modal
+        </h1>
+        <Button
+          primary
+          onClick={onBtnLoginClick}>
+          Login
+        </Button>
+        <KillTheWorldEvent
+          onNo={onNo}
+          onYes={onYes} />
+        <ModalLogin instanceId={modalLoginId} />
+      </div>
     </div>
   )
 }

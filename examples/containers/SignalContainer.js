@@ -21,11 +21,12 @@ const SignalModal = ({
   return (
     <Modal
       isOpen={modal.isVisible}
-      message={modal.message}
       title={modal.title}
       onClose={close}
       onClickOutside={close}
-      footer={getFooter(modal, eventType => event(modal, eventType))} />
+      footer={getFooter(modal, eventType => event(modal, eventType))}>
+      {modal.message}
+    </Modal>
   )
 }
 

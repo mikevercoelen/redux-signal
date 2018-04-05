@@ -13,16 +13,18 @@ import { getModal } from './selectors'
 
 export const isModalPropTypes = {
   instanceId: PropTypes.string.isRequired,
-  create: PropTypes.func.isRequired,
-  destroy: PropTypes.func.isRequired,
-  hide: PropTypes.func.isRequired,
+  close: PropTypes.func.isRequired,
   setBusy: PropTypes.func.isRequired,
   modal: PropTypes.object.isRequired
 }
 
 const isModal = WrappedComponent => {
   const Component = class extends React.Component {
-    static propTypes = isModalPropTypes
+    static propTypes = {
+      ...isModalPropTypes,
+      create: PropTypes.func.isRequired,
+      destroy: PropTypes.func.isRequired
+    }
 
     componentWillMount () {
       this.props.create()
@@ -35,16 +37,14 @@ const isModal = WrappedComponent => {
     render () {
       const {
         instanceId,
-        destroy,
-        hide,
+        close,
         setBusy,
         modal
       } = this.props
 
       const componentProps = {
         instanceId,
-        destroy,
-        hide,
+        close,
         setBusy,
         modal
       }
@@ -60,7 +60,7 @@ const isModal = WrappedComponent => {
   const mapDispatchToProps = (dispatch, { instanceId }) => ({
     create: () => dispatch(createModal(instanceId)),
     destroy: () => dispatch(destroyModal(instanceId)),
-    hide: () => dispatch(hideModal(instanceId)),
+    close: () => dispatch(hideModal(instanceId)),
     setBusy: isBusy => dispatch(setModalBusy(instanceId, isBusy))
   })
 

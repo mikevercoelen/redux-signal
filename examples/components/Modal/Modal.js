@@ -2,35 +2,42 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Modal as ModalConstruct } from 'react-modal-construction-kit'
 import styles from './Modal.scss'
+import cx from 'classnames'
 
 const Modal = ({
   title,
-  message,
+  children,
   footer,
+  dialogClassName,
   ...props
 }) => (
   <ModalConstruct
     {...props}
     contentClassName={styles.content}
-    dialogClassName={styles.dialog}>
+    dialogClassName={cx(styles.dialog, {
+      [dialogClassName]: dialogClassName
+    })}>
     <div className={styles.header}>
       {title}
     </div>
-    {message && (
+    {children && (
       <div className={styles.body}>
-        {message}
+        {children}
       </div>
     )}
-    <div className={styles.footer}>
-      {footer}
-    </div>
+    {footer && (
+      <div className={styles.footer}>
+        {footer}
+      </div>
+    )}
   </ModalConstruct>
 )
 
 Modal.propTypes = {
   title: PropTypes.string,
-  message: PropTypes.string,
-  footer: PropTypes.node
+  children: PropTypes.node,
+  footer: PropTypes.node,
+  ...ModalConstruct.propTypes
 }
 
 export default Modal

@@ -5,4 +5,23 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
   }
+
+  input {
+    display: block;
+    width: 100%;
+    border: 1px solid darken(white, 5%);
+    padding: .6em;
+    border-radius: 2px;
+    font-family: inherit;
+    outline: 0;
+    font-size: 14px;
+  }
+
+  form {
+    margin-bottom: 0;
+  }
+
+  .form-field {
+    margin-bottom: 1em;
+  }
 }

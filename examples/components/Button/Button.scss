@@ -1,4 +1,5 @@
 .component {
+  display: block;
   outline: 0;
   border: 0;
   padding: .5em 1em;
@@ -17,4 +18,9 @@
 .reject {
   background-color: #ee5253;
   color: white;
+}
+
+.disabled {
+  cursor: not-allowed;
+  opacity: .5;
 }
