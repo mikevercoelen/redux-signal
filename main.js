@@ -71,6 +71,17 @@
 /************************************************************************/
 /******/ ({
 
+/***/ "../Logo.png":
+/*!*******************!*\
+  !*** ../Logo.png ***!
+  \*******************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+eval("module.exports = __webpack_require__.p + \"83504cb0.png\";\n\n//# sourceURL=webpack:///../Logo.png?");
+
+/***/ }),
+
 /***/ "../node_modules/classnames/index.js":
 /*!*******************************************!*\
   !*** ../node_modules/classnames/index.js ***!
@@ -1299,7 +1310,7 @@ eval("\nvar content = __webpack_require__(/*! !../../../node_modules/css-loader?
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Logo = function Logo() {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement('img', { width: 150, height: 90, src: '../../../logo.png' })\n  );\n};\n\nexports.default = Logo;\n\n//# sourceURL=webpack:///./components/Logo/Logo.js?");
+eval("\n\nObject.defineProperty(exports, \"__esModule\", {\n  value: true\n});\n\nvar _react = __webpack_require__(/*! react */ \"../node_modules/react/index.js\");\n\nvar _react2 = _interopRequireDefault(_react);\n\nvar _Logo = __webpack_require__(/*! ../../../Logo.png */ \"../Logo.png\");\n\nvar _Logo2 = _interopRequireDefault(_Logo);\n\nfunction _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }\n\nvar Logo = function Logo() {\n  return _react2.default.createElement(\n    'div',\n    null,\n    _react2.default.createElement('img', { width: 150, height: 90, src: _Logo2.default })\n  );\n};\n\nexports.default = Logo;\n\n//# sourceURL=webpack:///./components/Logo/Logo.js?");
 
 /***/ }),
 
