@@ -10,7 +10,7 @@ export const initialState = fromJS({
     feedbackQueue: {},
     order: []
   },
-  modal: {}
+  modals: {}
 })
 
 const emptyModal = Map({
@@ -22,7 +22,7 @@ function signalCreate (state, action) {
   const modalInstanceId = getSignalModalId(action.modal.get('id'))
 
   return state
-    .setIn(['modal', modalInstanceId], emptyModal)
+    .setIn(['modals', modalInstanceId], emptyModal)
     .setIn(['signal', 'data', action.modal.get('id')], action.modal)
     .updateIn(['signal', 'order'], e => e.push(action.modal.get('id')))
     .update('signal', state => {
@@ -44,7 +44,7 @@ function signalDestroy (state, action) {
   return state
     .deleteIn(['signal', 'data', action.id])
     .updateIn(['signal', 'order'], e => e.delete(e.indexOf(action.id)))
-    .deleteIn(['modal', modalInstanceId])
+    .deleteIn(['modals', modalInstanceId])
 }
 
 function signalSetState (state, action) {
@@ -54,7 +54,7 @@ function signalSetState (state, action) {
   }
 
   return state.setIn(
-    ['modal', translatedAction.instanceId, 'state'],
+    ['modals', translatedAction.instanceId, 'state'],
     translatedAction.value
   )
 }
@@ -93,18 +93,18 @@ export default function reduxSignalReducer (state = initialState, action) {
   switch (action.type) {
     case ActionTypes.MODAL_CREATE:
     case ActionTypes.MODAL_HIDE:
-      return state.setIn(['modal', action.instanceId], emptyModal)
+      return state.setIn(['modals', action.instanceId], emptyModal)
     case ActionTypes.MODAL_DESTROY:
-      return state.deleteIn(['modal', action.instanceId])
+      return state.deleteIn(['modals', action.instanceId])
     case ActionTypes.MODAL_SHOW:
-      return state.updateIn(['modal', action.instanceId], modal => {
+      return state.updateIn(['modals', action.instanceId], modal => {
         return modal
           .set('isBusy', false)
           .set('state', ModalStates.VISIBLE)
           .set('data', action.data)
       })
     case ActionTypes.MODAL_SET_BUSY:
-      return state.setIn(['modal', action.instanceId, 'isBusy'], action.isBusy)
+      return state.setIn(['modals', action.instanceId, 'isBusy'], action.isBusy)
     case ActionTypes.SIGNAL_CREATE:
       return signalCreate(state, action)
     case ActionTypes.SIGNAL_DESTROY:

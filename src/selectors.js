@@ -13,9 +13,9 @@ export const getModal = customSelectorCreator(
   instanceId => instanceId,
   instanceId =>
     createSelector(
-      state => state.signal.get('modal'),
-      state => {
-        const modalState = state.get(instanceId)
+      state => state.signal.get('modals'),
+      modals => {
+        const modalState = modals.get(instanceId)
 
         if (!modalState) {
           return {
@@ -28,7 +28,7 @@ export const getModal = customSelectorCreator(
         }
 
         let firstVisibleModal = null
-        for (const [key, value] of state.entries()) {
+        for (const [key, value] of modals.entries()) {
           if (value.get('state') === ModalStates.VISIBLE) {
             firstVisibleModal = key
             break
@@ -48,9 +48,9 @@ export const getModal = customSelectorCreator(
 )
 
 export const getHasVisibleModal = createSelector(
-  state => state.signal.get('modal'),
-  modal => {
-    for (const value of modal.valueSeq()) {
+  state => state.signal.get('modals'),
+  modals => {
+    for (const value of modals.valueSeq()) {
       if (value.get('state') === ModalStates.VISIBLE) {
         return true
       }
