@@ -1,8 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import Button from './Button'
-import { Modal } from 'react-modal-construction-kit'
-import styles from './SignalContainer.scss'
+import Button from '../components/Button/Button'
+import Modal from '../components/Modal/Modal'
 
 import {
   createContainer,
@@ -21,23 +20,12 @@ const SignalModal = ({
 
   return (
     <Modal
-      contentClassName={styles.modalContent}
-      dialogClassName={styles.modalDialog}
       isOpen={modal.isVisible}
-      onClosed={close}
-      onClickOutside={close}>
-      <div className={styles.modalHeader}>
-        {modal.title}
-      </div>
-      {modal.message && (
-        <div className={styles.modalBody}>
-          {modal.message}
-        </div>
-      )}
-      <div className={styles.modalFooter}>
-        {getFooter(modal, eventType => event(modal, eventType))}
-      </div>
-    </Modal>
+      message={modal.message}
+      title={modal.title}
+      onClose={close}
+      onClickOutside={close}
+      footer={getFooter(modal, eventType => event(modal, eventType))} />
   )
 }
 

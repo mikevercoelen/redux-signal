@@ -1,12 +1,12 @@
 import React from 'react'
-import Button from './Button'
+import Button from './components/Button/Button'
 
 import {
   withSignal,
   withSignalPropTypes,
   SignalTypes,
   eventHandler
-} from '../../src/index'
+} from '../src/index'
 
 const KillTheWorldEvent = eventHandler()
 

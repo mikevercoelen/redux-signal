@@ -1,14 +1,14 @@
 $color-border: #f0f0f0;
 
-.modalDialog {
+.dialog {
   padding: 1em;
 }
 
-.modalContent {
+.content {
   border-radius: 2px;
 }
 
-.modalHeader {
+.header {
   padding: 1em;
   border-top-left-radius: 2px;
   border-top-right-radius: 2px;
@@ -16,12 +16,12 @@ $color-border: #f0f0f0;
   border-bottom: 1px solid $color-border;
 }
 
-.modalBody {
+.body {
   padding: 1em;
   border-bottom: 1px solid $color-border;
 }
 
-.modalFooter {
+.footer {
   padding: 1em;
   display: flex;
   border-radius: 0 0 2px 2px;

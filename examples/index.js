@@ -3,9 +3,9 @@ import { render } from 'react-dom'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 import rootReducer from './reducers'
-import SignalContainer from './components/SignalContainer'
-import SignalOverlay from './components/SignalOverlay'
-import App from './components/App'
+import SignalContainer from './containers/SignalContainer'
+import SignalOverlay from './containers/SignalOverlayContainer'
+import App from './App'
 import './index.scss'
 
 const store = createStore(

@@ -4,11 +4,11 @@ import { Overlay } from 'react-modal-construction-kit'
 import { connect } from 'react-redux'
 import { getHasVisibleModal } from '../../src/index'
 
-const SignalOverlay = ({ isVisible }) => (
+const SignalOverlayContainer = ({ isVisible }) => (
   <Overlay isVisible={isVisible} />
 )
 
-SignalOverlay.propTypes = {
+SignalOverlayContainer.propTypes = {
   isVisible: PropTypes.bool.isRequired
 }
 
@@ -18,4 +18,4 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps
-)(SignalOverlay)
+)(SignalOverlayContainer)
