@@ -80,7 +80,7 @@ const createContainer = Modal => {
         const eventQueueId = modal.get('eventHandlerId')
         if (eventQueueId) {
           const events = state.signal.getIn([
-            'signals',
+            'signal',
             'feedbackQueue',
             eventQueueId
           ])
