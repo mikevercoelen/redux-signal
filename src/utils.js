@@ -1,4 +1,4 @@
-export const getSignalInstanceId = id => `signal-${id}`
+export const getSignalModalId = id => `signal-${id}`
 
 export function uid (len) {
   len = len || 7

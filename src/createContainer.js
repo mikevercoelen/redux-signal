@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { Map, List } from 'immutable'
 import { getModal, getSignal } from './selectors'
-import { getSignalInstanceId } from './utils'
+import { getSignalModalId } from './utils'
 
 import {
   destroySignal,
@@ -70,7 +70,7 @@ const createContainer = Modal => {
 
     const rawModal = Map(modals.map(modal => [
       modal.get('id'),
-      getModal(getSignalInstanceId(modal.get('id')))(state)
+      getModal(getSignalModalId(modal.get('id')))(state)
     ]))
 
     const eventFeedback = Map(

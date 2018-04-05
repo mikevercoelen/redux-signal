@@ -10,7 +10,7 @@ import {
 
 export const withSignalPropTypes = {
   createSignal: PropTypes.func.isRequired,
-  setSignalState: PropTypes.func.isRequired,
+  setModalState: PropTypes.func.isRequired,
   signalEvent: PropTypes.func.isRequired,
   showModal: PropTypes.func.isRequired,
   hideModal: PropTypes.func.isRequired

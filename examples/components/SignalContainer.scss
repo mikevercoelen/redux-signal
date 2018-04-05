@@ -1,0 +1,36 @@
+$color-border: #f0f0f0;
+
+.modalDialog {
+  padding: 1em;
+}
+
+.modalContent {
+  border-radius: 2px;
+}
+
+.modalHeader {
+  padding: 1em;
+  border-top-left-radius: 2px;
+  border-top-right-radius: 2px;
+  font-size: 12px;
+  border-bottom: 1px solid $color-border;
+}
+
+.modalBody {
+  padding: 1em;
+  border-bottom: 1px solid $color-border;
+}
+
+.modalFooter {
+  padding: 1em;
+  display: flex;
+  border-radius: 0 0 2px 2px;
+  overflow: hidden;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: flex-end;
+
+  > :not(:last-child) {
+    margin-right: .25rem;
+  }
+}

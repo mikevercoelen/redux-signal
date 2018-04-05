@@ -1,7 +1,7 @@
 import { fromJS, List, Map } from 'immutable'
 import * as ActionTypes from './constants/ActionTypes'
 import * as ModalStates from './constants/ModalStates'
-import { getSignalInstanceId } from './utils'
+import { getSignalModalId } from './utils'
 
 export const initialState = fromJS({
   signal: {
@@ -19,7 +19,7 @@ const emptyModal = Map({
 })
 
 function signalCreate (state, action) {
-  const modalInstanceId = getSignalInstanceId(action.modal.get('id'))
+  const modalInstanceId = getSignalModalId(action.modal.get('id'))
 
   return state
     .setIn(['modal', modalInstanceId], emptyModal)
@@ -39,7 +39,7 @@ function signalCreate (state, action) {
 }
 
 function signalDestroy (state, action) {
-  const modalInstanceId = getSignalInstanceId(action.id)
+  const modalInstanceId = getSignalModalId(action.id)
 
   return state
     .deleteIn(['signal', 'data', action.id])
@@ -49,7 +49,7 @@ function signalDestroy (state, action) {
 
 function signalSetState (state, action) {
   const translatedAction = {
-    instanceId: getSignalInstanceId(action.id),
+    instanceId: getSignalModalId(action.id),
     value: action.value
   }
 

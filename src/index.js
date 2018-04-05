@@ -30,7 +30,7 @@ export {
 } from './isModal'
 
 export {
-  getSignalInstanceId
+  getSignalModalId
 } from './utils'
 
 export { default as eventHandler } from './eventHandler'
