@@ -33,6 +33,23 @@ rules.push({
   }]
 })
 
+rules.push({
+  test: /\.(ico|jpg|jpeg|png|gif|svg)(\?.*)?$/,
+  use: [{
+    loader: 'file-loader',
+    query: {
+      name: '[hash:8].[ext]'
+    }
+  }, {
+    loader: 'img-loader',
+    query: {
+      options: {
+        enabled: true
+      }
+    }
+  }]
+})
+
 const config = {
   context: __dirname,
   mode: 'development',
