@@ -79,9 +79,9 @@ In Redux Signal there are 2 types of modals: ***signals*** and ***modals***. Sig
 
 ***NOTE***:
 
-Redux Signal is not a library for the styling of your modals, that is your responsibility, however we made [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit) for making your life even easier. So check it out: [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit).
+Redux Signal is not a library for the styling of your modals, that is your responsibility, however we made [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit) for making your life even easier.
 
-Check out the [examples](#https://github.com/mikevercoelen/redux-signal/tree/master/examples) code on how to set it up correctly with `react-modal-construction-kit`.
+Check out the [examples](https://github.com/mikevercoelen/redux-signal/tree/master/examples) for more info.
 
 ### How does it work?
 Redux Signal uses an `event / feedback queue` mechanism for signals so we handle events in a clean way, without cluttering our app state with functions etc. See [Handling events](#handling-events)` for more info.
@@ -105,9 +105,9 @@ export const rootReducer = combineReducers({
 
 ### SignalContainer setup
 
-The second thing you need to do, is to create a `SignalContainer`. Again: Redux-signal is not responsible for your Modal look and feel, you need your own Modal component, see [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit) for a cool one.
+The second thing you need to do, is to create a `SignalContainer`. Again: Redux-signal is not responsible for your Modal look and feel, you need your own Modal component ([`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit))
 
-The `SignalContainer` is ***the link between signal and your modal component*** etc.
+The `SignalContainer` is ***the link between signal and your modal component***
 
 So let's create a `SignalContainer` component:
 
@@ -117,7 +117,7 @@ So let's create a `SignalContainer` component:
 import React from 'react'
 import PropTypes from 'prop-types'
 
-// Your own modals, see examples for a finished version
+// These are your application specific components we use in this demo example
 import Button from '../components/Button/Button'
 import Modal from '../components/Modal/Modal'
 
@@ -239,7 +239,7 @@ Now you've setup everything you need for `redux-signal` and can start using `cre
 
 ### Showing a signal
 
-1. Wrap the component where you want to show a signal with [`withSignal`](#withsignal), which injects the component with a prop called: `createSignal`.
+1. Wrap the component where you want to show a signal with [`withSignal`](#withsignal), which injects the component with a few props from which one is called: `createSignal`.
 2. Use [`createSignal`](#createsignal) to show a signal.
 
 Example:
@@ -306,33 +306,25 @@ import {
   eventHandler
 } from 'redux-signal'
 
-const KillTheWorldEvent = eventHandler()
+const KillTheWorldEvents = eventHandler()
 
 const Demo = ({ createSignal }) => {
-  const onYes = () => {
-    window.alert('Yep')
-  }
-  
-  const onNo = () => {
-    window.alert('Nope')
-  }
-  
   return (
     <div>
       <button
         onClick={() => {
           createSignal({
             type: SignalTypes.YES_NO,
-            eventHandler: KillTheWorldEvent,
-            title: 'hi',
-            message: 'Hello world'
+            eventHandler: KillTheWorldEvents,
+            title: 'Please confirm',
+            message: 'Are you sure you want to kill the world?'
           })
         }}>
-        Show ok
+        Kill the world
       </button>
-      <KillTheWorldEvent
-        onYes={onYes}
-        onNo={onNo} />
+      <KillTheWorldEvents
+        onYes={() => window.alert("You have killed the world.")}
+        onNo={() => window.alert("Thank god, you are a good kid."} />
     </div>
   )
 }
@@ -392,8 +384,6 @@ The method expects an object with the following parameters:
 ### getHasVisibleModal
 
 This is a selector, and returns true or false if a modal OR signal is visible, this can be used to render an overlay component
-
-The method expects an object with the following parameters:
 
 | Property | Type | Default | Description |
 |:---|:---|:---|:---|
