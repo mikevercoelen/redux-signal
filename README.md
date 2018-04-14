@@ -59,6 +59,7 @@ More example code [available here](https://github.com/mikevercoelen/redux-signal
   - [createContainer](#createcontainer)
   - [withSignal](#withsignal)
   - [createSignal](#createsignal)
+  - [getHasVisibleModal](#gethasvisiblemodal)
   
 
 ## Installation
@@ -385,3 +386,13 @@ The method expects an object with the following parameters:
 | `type` | SignalType (enum) | - | The type of Signal see: [Signal types](#signal-types) |
 | `eventHandler` | EventHandler | - | ***(optional)*** pass in an EventHandler to handle events |
 | `...props` | - | - | All other props passed to `createSignal` can be accessed in your `SignalContainer`'s `modal` object prop, see [createContainer](#createcontainer) |
+
+### getHasVisibleModal
+
+This is a selector, and returns true or false if a modal OR signal is visible, this can be used to render an overlay component
+
+The method expects an object with the following parameters:
+
+| Property | Type | Default | Description |
+|:---|:---|:---|:---|
+| `state` | object | - | Your application state |
