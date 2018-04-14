@@ -7,13 +7,11 @@
   "env": {
     "development": {
       "plugins": [
-        "lodash",
         "transform-es2015-modules-commonjs"
       ]
     },
     "test": {
       "plugins": [
-        "lodash",
         "transform-es2015-modules-commonjs",
         "transform-react-jsx-source",
         "istanbul"
@@ -21,14 +19,7 @@
     },
     "production": {
       "plugins": [
-        "lodash",
         "transform-es2015-modules-commonjs"
-      ]
-    },
-    "es": {
-      "plugins": [
-        "lodash",
-        "./babel-lodash-es"
       ]
     }
   }

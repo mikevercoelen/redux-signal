@@ -53,8 +53,6 @@
   },
   "homepage": "https://github.com/mikevercoelen/redux-signal#readme",
   "dependencies": {
-    "lodash": "^4.17.5",
-    "lodash-es": "^4.17.8",
     "lru-memoize": "^1.0.2",
     "prop-types": "^15.6.1"
   },
@@ -65,7 +63,6 @@
     "babel-jest": "^22.4.3",
     "babel-loader": "^7.1.4",
     "babel-plugin-istanbul": "^4.1.5",
-    "babel-plugin-lodash": "^3.3.2",
     "babel-plugin-syntax-async-functions": "^6.13.0",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.0",
     "babel-plugin-transform-react-jsx-source": "^6.22.0",
@@ -99,7 +96,6 @@
     "jest": "^22.4.3",
     "jest-immutable-matchers": "^2.0.1",
     "lint-staged": "^7.0.4",
-    "lodash-webpack-plugin": "^0.11.4",
     "node-sass": "^4.8.3",
     "npm-watch": "^0.3.0",
     "react": "^16.3.1",
