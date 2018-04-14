@@ -52,6 +52,9 @@ More example code [available here](https://github.com/mikevercoelen/redux-signal
   - [SignalContainer](#signalcontainer-setup)
 - [Signals](#signals)
   - [Signal types](#signal-types)
+  - [Handling events](#handling-events)
+- [Modals](#modals)
+- [Overlay](#overlay)
 - [API](#api)
   - [createContainer](#createcontainer)
   - [withSignal](#withsignal)
@@ -65,28 +68,26 @@ More example code [available here](https://github.com/mikevercoelen/redux-signal
 ## Introduction
 
 ### The problem
-Setting up a flexible solution for modals with Redux is hard. Our apps mostly need 2 types of modals: simple modals (such as confirms / warnings etc.) and custom modals.
+Setting up a flexible solution for modals with Redux is hard. Our apps mostly need 2 types of modals: simple modals (such as confirms / warnings etc.) and custom modals. 
 
-We might need multiple modals open at once, so we need some stacking order and we only want to display one overlay component.
+We might need multiple modals open at once, so we need some stacking order and we only want to display one overlay component. We also want our Redux state to be clean and serializable.
 
 So meet Redux Signal, hi.
 
-Redux Signal is a library for Redux and React, that gives you a scalable and flexible solution for showing modals. Basically `redux-signal` is a proven solution for handling state for setting up modals.
+Redux Signal is a library for Redux and React, that gives you a scalable and flexible solution for showing modals.
 
-In Redux Signal there are 2 types of modals: signals and modals. Signals are simple notifications: like warnings when things go wrong, confirmations when a user tries to removing an item, or user feedback when an item has been removed etc. Modals are fully customizable, modals. Like forms etc.
+In Redux Signal there are 2 types of modals: ***signals*** and ***modals***. Signals are simple notifications: like warnings when things go wrong, confirmations when a user tries to removing an item, or user feedback when an item has been removed etc. Modals are fully customizable, modals. Like forms etc.
 
-Redux Signal is not a library for the styling of your modals, you are fully responsible for that part however we made `react-modal-construction-kit` for making your life even easier. So check it out: [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit).
+Redux Signal is not a library for the styling of your modals, that is your responsibility, however we made [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit) for making your life even easier. So check it out: [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit).
 
 ### How does it work?
-One of the problems we face with Redux and modals is that we want to keep the state clean and serializable, so no callbacks etc.
-
-Redux Signal uses an `event / feedback queue` mechanism to handle state modifications with callbacks for signals. More on this later.
+Redux Signal uses an `event / feedback queue` mechanism for signals so we handle events in a clean way, without cluttering our app state with functions etc. See [Handling events](#handling-events)` for more info.
 
 ## Setup
 
 ### Reducer setup
 
-The first thing you need to do is to include the signal reducer in your rootReducer. Please make sure it's mounted on your rootReducer as `signal`, we are working on making this flexible in the future.
+The first thing you need to do is to include the signal reducer in your rootReducer. Please make sure it's mounted at your rootReducer as `signal`, we are working on making this flexible in the future.
 
 `reducers/index.js`
 
@@ -101,9 +102,13 @@ export const rootReducer = combineReducers({
 
 ### SignalContainer setup
 
-The second thing you need to do, is to setup the `SignalContainer`. Redux-signal is not responsible for rendering your Modal styles, you need your own Modal component. The `SignalContainer` is the link between signal and your modal component etc.
+The second thing you need to do, is to create a `SignalContainer`. Again: Redux-signal is not responsible for your Modal look and feel, you need your own Modal component, see [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit) for a cool one.
 
-First we create a `SignalContainer` component:
+The `SignalContainer` is ***the link between signal and your modal component*** etc.
+
+So let's create a `SignalContainer` component:
+
+`containers/SignalContainer.js`
 
 ```js
 import React from 'react'
@@ -218,7 +223,7 @@ function getFooter (modal, onModalEvent) {
 export default createContainer(SignalContainer)
 ```
 
-Once you've created the `SignalContainer` (which, again, is a link between your application's Modal and `redux-signal`) you have to use it somewhere in your application.
+Once you've created the `SignalContainer` (which, again, is the link between your Modal and `redux-signal`) you have to use it somewhere in your application.
 The most logical place would be your main layout, use it like so:
 
 ```js
@@ -231,10 +236,12 @@ Now you've setup everything you need for `redux-signal` and can start using `cre
 
 ### Showing a signal
 
-1. Wrap your component with `withSignal`, which injects the component with a prop called: `createSignal`.
-2. Use `createSignal` to show a signal
+1. Wrap the component where you want to show a signal with [`withSignal`](#withsignal), which injects the component with a prop called: `createSignal`.
+2. Use [`createSignal`](#createsignal) to show a signal.
 
 Example:
+
+`components/Demo.js`
 
 ```js
 import React from 'react'
@@ -282,7 +289,7 @@ It's your responsibility for handling the signal type in the `SignalContainer`, 
 
 More info see [createSignal API](#createsignal)
 
-### Handling signal callbacks / events
+### Handling events
 
 Lets say you want to have a confirmation popup when a user wants to remove an item. You want to handle the events when clicked on the `yes` button or `no` button. You can do so by using `eventHandler`
 
@@ -334,9 +341,13 @@ Demo.propTypes = {
 export default withSignal(Demo)
 ```
 
-## Customized modals
+## Modals
 
-TODO: for now check out the [custom modal examples code](https://github.com/mikevercoelen/redux-signal/blob/master/examples/components/ModalLogin/ModalLogin.js).
+TODO: for now check out the [modal examples code](https://github.com/mikevercoelen/redux-signal/blob/master/examples/components/ModalLogin/ModalLogin.js).
+
+## Overlay
+
+TODO: for now check out the [SignalOverlayContainer in the examples code](https://github.com/mikevercoelen/redux-signal/blob/master/examples/containers/SignalOverlayContainer.js).
 
 ## API
 
@@ -372,5 +383,5 @@ The method expects an object with the following parameters:
 | Property | Type | Default | Description |
 |:---|:---|:---|:---|
 | `type` | SignalType (enum) | - | The type of Signal see: [Signal types](#signal-types) |
-| `eventHandler` | EventHandler | - | (optional) pass in an EventHandler to handle events |
+| `eventHandler` | EventHandler | - | ***(optional)*** pass in an EventHandler to handle events |
 | `...props` | - | - | All other props passed to `createSignal` can be accessed in your `SignalContainer`'s `modal` object prop, see [createContainer](#createcontainer) |
