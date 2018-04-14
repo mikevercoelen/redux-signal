@@ -9,7 +9,7 @@ import {
   SignalTypes
 } from '../../src/index'
 
-const SignalModal = ({
+const SignalContainer = ({
   event,
   destroy,
   close,
@@ -29,7 +29,7 @@ const SignalModal = ({
   )
 }
 
-SignalModal.propTypes = {
+SignalContainer.propTypes = {
   event: PropTypes.func,
   destroy: PropTypes.func,
   close: PropTypes.func,
@@ -105,4 +105,4 @@ function getFooter (modal, onModalEvent) {
   return null
 }
 
-export default createContainer(SignalModal)
+export default createContainer(SignalContainer)
