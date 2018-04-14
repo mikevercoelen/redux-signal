@@ -75,11 +75,13 @@ We might need multiple modals open at once, so we need some stacking order and w
 
 So meet Redux Signal, hi.
 
-Redux Signal is a library for Redux and React, that gives you a scalable and flexible solution for showing modals.
+In Redux Signal there are 2 types of modals: ***signals*** and ***modals***. Signals are simple notifications: like warnings when things go wrong, confirmations when a user tries to removing an item, or user feedback when an item has been removed etc. Modals are fully customizable, modals. Like login popups etc.
 
-In Redux Signal there are 2 types of modals: ***signals*** and ***modals***. Signals are simple notifications: like warnings when things go wrong, confirmations when a user tries to removing an item, or user feedback when an item has been removed etc. Modals are fully customizable, modals. Like forms etc.
+***NOTE***:
 
 Redux Signal is not a library for the styling of your modals, that is your responsibility, however we made [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit) for making your life even easier. So check it out: [`react-modal-construction-kit`](https://github.com/mikevercoelen/react-modal-construction-kit).
+
+Check out the [examples](#https://github.com/mikevercoelen/redux-signal/tree/master/examples) code on how to set it up correctly with `react-modal-construction-kit`.
 
 ### How does it work?
 Redux Signal uses an `event / feedback queue` mechanism for signals so we handle events in a clean way, without cluttering our app state with functions etc. See [Handling events](#handling-events)` for more info.
