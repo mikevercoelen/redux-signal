@@ -84,7 +84,7 @@ Redux Signal is not a library for the styling of your modals, that is your respo
 Check out the [examples](https://github.com/mikevercoelen/redux-signal/tree/master/examples) for more info.
 
 ### How does it work?
-Redux Signal uses an `event / feedback queue` mechanism for signals so we handle events in a clean way, without cluttering our app state with functions etc. See [Handling events](#handling-events)` for more info.
+Redux Signal uses an `event / feedback queue` mechanism for signals so we handle events in a clean way, without cluttering our app state with functions etc. See [Handling events](#handling-events) for more info.
 
 ## Setup
 
